@@ -1,0 +1,14 @@
+matplotlib
+streamlit==1.36.0
+numpy==1.26.4
+pandas==2.0.3
+mplsoccer
+statsmodels
+itscalledsoccer==1.1.0
+scipy
+streamlit-ace
+streamlit-metrics
+altair
+plotly
+cachecontrol
+rapidfuzz
