@@ -15,7 +15,7 @@ st.title("Welcome to our UTK Soccer Lab STEM Camp!")
 #if st.button("Best ever"):
 #      st.image("https://www.si.com/.image/t_share/MTc5NTMwMzAxNjQ1NTMwMjQ5/gettyimages-891445.jpg")
 
-st.header("Here, coach Gus (yours truly), will provide information and examples to help you on your path to building your own app.")
+st.header("Here, Coach Gus (yours truly), will provide information and examples to help you on your path to building your own app.")
 
 #st.text("This is the home page of our currently-under-development app!")
 coach_message = st.chat_message(name="Coach Gus",avatar="./media/profile_coachGus.JPG")
@@ -52,6 +52,7 @@ with coach_message:
                 st.balloons()
 
 st.subheader("See? Magic.")
+st.page_link("https://docs.streamlit.io/develop/api-reference", label="Click me to read about more Streamlit ~~methods~~ spells", icon="🪄")
 st.divider()
 
 st.title("Your Brain, Electricity, Some Stuff Called 'Myelin', and Getting Better at Stuff.")
@@ -65,7 +66,6 @@ with col1:
 
 
 st.divider()
-#st.header("What about that data thing? What *is* data?")
 
 #coach_message = st.chat_message(name="Coach Gus",avatar="./resources/profile_coachGus.JPG")
 #coach_message.write("Below you'll find a *file uploader* and the *codeBox* where you can play around with data you upload!")
@@ -90,39 +90,39 @@ with st.echo():
         with open(file_location) as file:
                 data = pd.read_csv(file)
         #then we make sure the data is in the right format (called a type) for us to work with, DataFrame, using the pandas method DataFrame(). We call our pandas DataFrame "ETFS_data"
-        ETFS_data = pd.DataFrame(data)
+        group_data = pd.DataFrame(data)
         #then we take a look at our data using st.dataframe()
-        st.dataframe(ETFS_data)
-st.subheader("Isolate a single player's data - let's say Ayden")
+        st.dataframe(group_data)
+st.subheader("Isolate a single player's data - let's say Carolina")
 with st.echo():
-       aydenData = ETFS_data.loc[ETFS_data["Player Name"] == "Ayden - ETFS"]      
+       player_data = group_data.loc[group_data["Player Name"] == "Carolina - SL"]      
 coach_message = st.chat_message(name="Coach Gus",avatar="./media/profile_coachGus.JPG")
 with coach_message:
        st.write('''the line of code above used the pandas "loc" method. It's asking the computer to keep only the rows of the dataframe where the values in the column "Player Name" match with the string "Ayden - ETFS".''')
        st.write("then we ask streamlit to show us our new dataframe using the st.dataframe spell (really called a _method_)")
 with st.echo():
-        st.dataframe(aydenData)
+        st.dataframe(player_data)
 
 coach_message = st.chat_message(name="Coach Gus",avatar="./media/profile_coachGus.JPG")
 with coach_message:
         st.write("Here we use the streamlit's line_chart method to plot Ayden's daily top speed")
         with st.echo():
-                st.line_chart(aydenData, x = "Session Title", y="Top Speed (m/s)")
+                st.line_chart(player_data, x = "Session Title", y="Top Speed (m/s)")
 st.subheader("Make your charts interactive!")
 coach_message = st.chat_message(name="Coach Gus",avatar="./media/profile_coachGus.JPG")
 with coach_message:
         st.write("Now instead of using ``st.line_chart()``, we will us ``st.altair_chart()`` to make our plot interactive. As a bonus, I'll show you how to isolate multiple player's data at the same time.")
         st.write("first, let's get our player data")
         with st.echo():
-                SLIdata = ETFS_data.loc[(ETFS_data["Player Name"] == "Mr. Josh - ETFS") | (ETFS_data["Player Name"] == "Ms. Mona - ETFS") | (ETFS_data["Player Name"] == "Mr. Jaylen - ETFS")]
-                st.dataframe(SLIdata)
+                players_data = group_data.loc[(group_data["Player Name"] == "Olivia - SL") | (group_data["Player Name"] == "Kylie - SL") | (group_data["Player Name"] == "Dashley - SL")]
+                st.dataframe(players_data)
 coach_message = st.chat_message(name="Coach Gus",avatar="./media/profile_coachGus.JPG")
 with coach_message:
         st.write("We will use ``st.altair_chart()`` to vizualize their data. This is more complicated spell, but worth it! We will also need to borrow the altair library for this:")
         st.code("import altair as alt", language="python") 
         st.write("I want a line chart so:")
         with st.echo():
-                lines = alt.Chart(SLIdata, title="My interactive chart").mark_line().encode(
+                lines = alt.Chart(players_data, title="My interactive chart").mark_line().encode(
                         x="Session Title:T",#the little ":T" after "Session Title" tells altair that this data is a time or date value
                         y="Top Speed (m/s)",
                         color="Player Name"
@@ -136,7 +136,7 @@ coach_message = st.chat_message(name="Coach Gus",avatar="./media/profile_coachGu
 with coach_message:
         st.write("Not too different than before right? Well, let's add some circles so it's easier to read the data.")
         with st.echo():
-                circles = alt.Chart(SLIdata).mark_circle().encode(
+                circles = alt.Chart(players_data).mark_circle().encode(
                         x="Session Title:T",
                         y="Top Speed (m/s)",
                         color="Player Name",

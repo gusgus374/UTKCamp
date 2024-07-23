@@ -27,7 +27,7 @@ import altair as alt
         #     st.write("No shortcuts.")
          #    st.write("So, we focus on _fundamentals not fads_. We strive _for progress not perfection_")
 #st.divider()
-with st.expander("login info"):
+with st.expander("Catapult Login Info",icon=":material/passkey:"):
     st.subheader("Email Address: soccerlab@oneknoxsc.com")
     st.subheader("password: wu!UMCq2avFLm!")
 st.title("Let's Boot Up. Have a look at your last session's data:")
@@ -45,10 +45,18 @@ with st.sidebar:
     
 coach_message = st.chat_message(name="Coach Gus",avatar="./media/profile_coachGus.JPG")
 coach_message.write("Pick a session above and figure out how to export the data in CSV format. Then I want you to upload that data file using the button below.")
+coach_message = st.chat_message(name="Coach Gus",avatar="./media/profile_coachGus.JPG")
+coach_message.write('Alternatively, you can click the "Download Last 30 Days GPS Data" button at the bottom of the page and use that file instead!')
+#use_cloud_file = st.checkbox('Use "last30days_GPS.csv" instead of your own file')
 with st.echo():
     # Everything inside this block will be both printed to the screen
     # and executed.
 
+    #if use_cloud_file:
+    #    uploaded_file = pd.read_csv("./data/last30days_GPS.csv")
+     #   uploaded_file = pd.DataFrame(uploaded_file)
+    #else:
+        #uploaded_file = st.file_uploader("Choose a file")
     uploaded_file = st.file_uploader("Choose a file")
     if uploaded_file is not None:
         dataframe = pd.read_csv(uploaded_file)
@@ -109,7 +117,7 @@ if uploaded_file is not None:
             st.write(dataframe)
     #dataframe = dataframe.loc[dataframe['Split Name'] == 'game']
     #dataframe = dataframe.drop(['Date','Split Name','Tags','Hr Load','Time In Red Zone (min)','Hr Max (bpm)'],axis=1)
-    with st.sidebar:
+    with st.popover("Change the graph variables"):
          mycol = dataframe.columns.tolist()
          xvar = st.selectbox("Pick Variable #1",mycol)
          yvar = st.selectbox("Pick Variable #2",mycol,5)
@@ -130,3 +138,27 @@ coach_message = st.chat_message(name="Coach Gus",avatar="./media/profile_coachGu
 coach_message.write("Caring deeply makes you vulnerable because things don't always go your way.")
 coach_message.write("And caring deeply is also key to a rich and meaningful life.")
 coach_message.write("Don't be like the kids in gym class who were too cool to try. Don't be afraid to put yourslef out there. The best stuff comes on the other side of that.")
+#uploaded_file = st.file_uploader("Choose a data file")
+#if uploaded_file is not None:
+        # use the Pandas read_csv method to read the gps_data and turn into a dataframe
+#        all_data = pd.read_csv(uploaded_file)
+        # keep only the rows were the column 'Split Name' has a value equal to 'all'
+ #       game_data = all_data.loc[all_data['Split Name'] == "game"]
+        #game_data = game_data.loc[game_data['Tags'] == 'game']
+  #      game_data = game_data.set_index('Player Name', drop=False)
+        #game_data["day"] = game_data["Date"] - 45150
+        #game_data = game_data.loc[game_data["day"] > 0]
+   #     with st.expander(label="View Your Data",expanded=False):
+                #display the uploaded data
+    #            st.write(game_data)
+     #   variable_x = st.selectbox("Pick Your X Variable!",game_data.columns.to_list(),1)
+      #  variable_y = st.selectbox("Pick Your Y Variable!",game_data.columns.to_list(),8)
+       # variable_size = st.selectbox("Pick Your Size Variable!",game_data.columns.to_list(),9)
+#if uploaded_file is not None:
+ #   chart = alt.Chart(game_data).mark_circle().encode(
+  #      x=variable_x,
+   #     y=variable_y,
+    #    size=alt.Size(variable_size,legend=None),
+     #   color=alt.Color('Player Name',legend=None),
+      #  tooltip=["Player Name","Session Title",]).properties(height=500).interactive()
+    #st.altair_chart(chart, theme="streamlit", use_container_width=True)

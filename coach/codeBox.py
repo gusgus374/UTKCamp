@@ -16,7 +16,14 @@ if 'old_code' not in st.session_state:
      st.session_state['old_code'] = None
 
 st.title("footyLab codeBox")
-st.subheader("Don't forget to save your code!!")
+coach_message = st.chat_message(name="Coach Gus",avatar="./media/profile_coachGus.JPG")
+with coach_message:
+    st.write("**Stuck**? :green[Embrace it], :orange[cuz that's part of it!] You gotta just _**try stuff**_")
+    st.write("If you're struggling, try finding examples in other pages. Try making a button.")
+    with st.echo():
+        if st.button('Taylor "Slipped"'):
+            st.video("./media/taylorslipped.mp4")
+st.subheader("_Don't forget to save your code!!_")
 with st.sidebar:
     file = st.file_uploader("upload python script",type=[".py"])
 
@@ -46,57 +53,52 @@ st.title("What do you want to build today?")
 """
      
 
-tab1, tab2 = st.tabs(["EDITOR","USER EXPERIENCE"])
 
-
-
-with tab1:
-    editor = st.container(border=True)
-    if st.session_state.code is None:
-        with editor:
-            code = st_ace(
-                value=INITIAL_CODE,
-                language="python",
-                placeholder="st.header('Hello world!')",
-                theme="tomorrow_night_eighties",
-                show_gutter=True,
-                wrap=True,
-                show_print_margin=True,
-                auto_update=False,
-                readonly=False,
-                key="ace-editor",
-            )
-            st.write("Hit `CTRL+ENTER` to refresh")
-    if st.session_state.code is not None:
-        with editor:
-            code = st_ace(
-                value=st.session_state.code,
-                language="python",
-                placeholder="st.header('Hello world!')",
-                theme="tomorrow_night_eighties",
-                show_gutter=True,
-                wrap=True,
-                show_print_margin=True,
-                auto_update=False,
-                readonly=False,
-                key="ace-editor",
-            )
+editor = st.container(border=False)
+if st.session_state.code is None:
+    with editor:
+        code = st_ace(
+            value=INITIAL_CODE,
+            language="python",
+            placeholder="st.header('Hello world!')",
+            theme="tomorrow_night_eighties",
+            show_gutter=True,
+            wrap=True,
+            show_print_margin=True,
+            auto_update=False,
+            readonly=False,
+            key="ace-editor",
+        )
+        #st.write("Hit `CTRL+ENTER` to refresh")
+if st.session_state.code is not None:
+    with editor:
+        code = st_ace(
+            value=st.session_state.code,
+            language="python",
+            placeholder="st.header('Hello world!')",
+            theme="tomorrow_night_eighties",
+            show_gutter=True,
+            wrap=True,
+            show_print_margin=True,
+            auto_update=False,
+            readonly=False,
+            key="ace-editor",
+        )
 
 st.session_state.code = code
 st.session_state.old_code = st.session_state.code
         #st.write("*Remember to save your code separately!*")
 
-
-
-with tab2:
-    app = st.container(border=True)
-    with app:
-        exec(st.session_state.code)
-
-with st.popover("SAVE YOUR WORK"):
+with st.popover(f"{st.session_state.user}, SAVE YOUR WORK!"):
     file_name = st.text_input("Name your file",f"{st.session_state.user}")
     btn = st.download_button(
                     label="Download Python File",
                     data = code,
                     file_name=f"{file_name}.py"
     )
+
+with st.expander("Expand me to preview your app!",icon=":material/preview:"):
+    app = st.container(border=False)
+    with app:
+        exec(st.session_state.code)
+
