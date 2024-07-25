@@ -25,7 +25,7 @@ if "user" not in st.session_state:
 
 ROLES = [None,"Coach Gus", "Alex", "Bowman", "Caroline", "Dashley", "Deklan", "Evie", "Gabriel", "Gregory", "Jameson", "Kade", "Kellan", "Kylie", "Lucas", "Olivia", "Taylor", "Teddy"]
 allroles = ["Coach Gus", "Alex", "Bowman", "Caroline", "Dashley", "Deklan", "Evie", "Gabriel", "Gregory", "Jameson", "Kade", "Kellan", "Kylie", "Lucas", "Olivia", "Taylor", "Teddy"]
-playersdeployed = ["coach Gus", "Kylie", "Carolina", "Gregory", "Olivia", "Teddy", "Lucas"]
+playersdeployed = ["coach Gus", "Kylie", "Carolina", "Gregory", "Olivia", "Teddy", "Lucas", "Kade", "Kellan"]
 def login():
 
     st.header("Log in")
@@ -117,10 +117,24 @@ lucas = st.Page(
     default=(user == "Lucas")
 )
 
+kade = st.Page(
+    "./roster/Kade.py",
+    title="Kade's App",
+    icon=":material/school:",
+    default=(user == "Kade")
+)
+
+kellan = st.Page(
+    "./roster/Kellan.py",
+    title="Kellan's App",
+    icon=":material/school:",
+    default=(user == "Kellan")
+)
+
 account_pages = [logout_page, settings]
 explore_pages = [BootRoom, prosoccer]
 build_pages = [codeBox, coachGus]
-deployed_pages = [classpage, kylie, carolina, gregory, olivia, teddy, lucas]
+deployed_pages = [classpage, kylie, carolina, gregory, olivia, teddy, lucas, kade, kellan]
 
 page_dict = {}
 
