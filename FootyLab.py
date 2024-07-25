@@ -109,12 +109,14 @@ teddy = st.Page(
     icon=":material/school:",
     default=(user == "Teddy")
 )
+
 lucas = st.Page(
     "./roster/Lucas.py",
     title="Lucas's App",
     icon=":material/school:",
     default=(user == "Lucas")
 )
+
 account_pages = [logout_page, settings]
 explore_pages = [BootRoom, prosoccer]
 build_pages = [codeBox, coachGus]
