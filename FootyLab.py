@@ -25,7 +25,7 @@ if "user" not in st.session_state:
 
 ROLES = [None,"Coach Gus", "Alex", "Bowman", "Caroline", "Dashley", "Deklan", "Evie", "Gabriel", "Gregory", "Jameson", "Kade", "Kellan", "Kylie", "Lucas", "Olivia", "Taylor", "Teddy"]
 allroles = ["Coach Gus", "Alex", "Bowman", "Caroline", "Dashley", "Deklan", "Evie", "Gabriel", "Gregory", "Jameson", "Kade", "Kellan", "Kylie", "Lucas", "Olivia", "Taylor", "Teddy"]
-playersdeployed = ["coach Gus", "Kylie"]
+playersdeployed = ["coach Gus", "Kylie", "Carolina", "Gregory", "Olvia", "Teddy"]
 def login():
 
     st.header("Log in")
@@ -82,10 +82,38 @@ kylie = st.Page(
     default=(user == "Kylie")
 )
 
+carolina = st.Page(
+    "./roster/Carolina.py",
+    title="Carolina's App",
+    icon=":material/school:",
+    default=(user == "Carolina")
+)
+
+gregory = st.Page(
+    "./roster/minecraft_sus.py",
+    title="Minecraft sus",
+    icon=":material/school:",
+    default=(user == "Gregory")
+)
+
+olivia = st.Page(
+    "./roster/Olivia.py",
+    title="Olivia's App",
+    icon=":material/school:",
+    default=(user == "Olivia")
+)
+
+teddy = st.Page(
+    "./roster/Teddy.py",
+    title="Teddy's App",
+    icon=":material/school:",
+    default=(user == "Teddy")
+)
+
 account_pages = [logout_page, settings]
 explore_pages = [BootRoom, prosoccer]
 build_pages = [codeBox, coachGus]
-deployed_pages = [classpage, kylie]
+deployed_pages = [classpage, kylie, carolina, gregory, olivia, teddy]
 
 page_dict = {}
 

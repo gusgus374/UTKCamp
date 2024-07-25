@@ -97,7 +97,7 @@ with st.popover(f"{st.session_state.user}, SAVE YOUR WORK!"):
                     file_name=f"{file_name}.py"
     )
 
-with st.expander("Expand me to preview your app!",icon=":material/preview:"):
+with st.expander("Expand me to preview your app!",icon=":material/preview:",expanded=True):
     app = st.container(border=False)
     with app:
         exec(st.session_state.code)
