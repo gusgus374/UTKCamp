@@ -23,9 +23,9 @@ if "user" not in st.session_state:
 #if "password" not in st.session_state:
 #     st.session_state.password = None
 
-ROLES = [None,"Coach Gus", "Alex", "Bowman", "Caroline", "Dashley", "Deklan", "Evie", "Gabriel", "Gregory", "Jameson", "Kade", "Kellan", "Kylie", "Lucas", "Olivia", "Taylor", "Teddy"]
-allroles = ["Coach Gus", "Alex", "Bowman", "Caroline", "Dashley", "Deklan", "Evie", "Gabriel", "Gregory", "Jameson", "Kade", "Kellan", "Kylie", "Lucas", "Olivia", "Taylor", "Teddy"]
-playersdeployed = ["coach Gus", "Kylie", "Carolina", "Gregory", "Olivia", "Teddy", "Lucas", "Kade", "Kellan", "Gabriel"]
+ROLES = [None,"Coach Gus", "Alex", "Bowman", "Carolina", "Dashley", "Deklan", "Evie", "Gabriel", "Gregory", "Jameson", "Kade", "Kellan", "Kylie", "Lucas", "Olivia", "Taylor", "Teddy"]
+allroles = ["Coach Gus", "Alex", "Bowman", "Carolina", "Dashley", "Deklan", "Evie", "Gabriel", "Gregory", "Jameson", "Kade", "Kellan", "Kylie", "Lucas", "Olivia", "Taylor", "Teddy"]
+playersdeployed = ["coach Gus", "Kylie", "Carolina", "Gregory", "Olivia", "Teddy", "Lucas", "Kade", "Kellan", "Gabriel", "Alex", "Bowman", "Dashley", "Evie", "Taylor", "Jameson"]
 def login():
 
     st.header("Log in")
@@ -90,7 +90,7 @@ carolina = st.Page(
 )
 
 gregory = st.Page(
-    "./roster/minecraft_sus.py",
+    "./roster/Gregorys_awsome_sus_bruh.py",
     title="Minecraft sus",
     icon=":material/school:",
     default=(user == "Gregory")
@@ -138,10 +138,52 @@ gabriel = st.Page(
     default=(user == "Gabriel")
 )
 
+alex = st.Page(
+    "./roster/Alex.py",
+    title="Alex's App",
+    icon=":material/school:",
+    default=(user == "Alex")
+)
+
+bowman = st.Page(
+    "./roster/Bowman.py",
+    title="Bowman's App",
+    icon=":material/school:",
+    default=(user == "Bowman")
+)
+
+dashley = st.Page(
+    "./roster/Dashley.py",
+    title="Dashley's App",
+    icon=":material/school:",
+    default=(user == "Dashley")
+)
+
+evie = st.Page(
+    "./roster/Evie.py",
+    title="Evie's App",
+    icon=":material/school:",
+    default=(user == "Evie")
+)
+
+taylor = st.Page(
+    "./roster/Taylor.py",
+    title="Taylor's App",
+    icon=":material/school:",
+    default=(user == "Taylor")
+)
+
+jameson = st.Page(
+    "./roster/Jameson.py",
+    title="Jameson's App",
+    icon=":material/school:",
+    default=(user == "Jameson")
+)
+
 account_pages = [logout_page, settings]
 explore_pages = [BootRoom, prosoccer]
 build_pages = [codeBox, coachGus]
-deployed_pages = [classpage, kylie, carolina, gregory, olivia, teddy, lucas, kade, kellan, gabriel]
+deployed_pages = [classpage, kylie, carolina, gregory, olivia, teddy, lucas, kade, kellan, gabriel, alex, bowman, dashley, evie, taylor, jameson]
 
 page_dict = {}
 

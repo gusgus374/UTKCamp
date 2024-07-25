@@ -88,12 +88,12 @@ with coach_message:
         st.write("Well first we collect information like: 'What are your hobbies? 'What is your favorite subject in school?' 'What is your favorite sport?' 'What kind of career(s) are intersting to you?'")
         st.write("and then we organize it!")
 info = {
-      'Name': ['Taylor','Kade','Gabe','Carolina','Kylie','Lucas','Teddy','Olivia','Alex','Dashley','Jameson'], 
-      'Hobby':['soccer','soccer and basketball','soccer', 'swimming, playing basketball and reading.', 'soccer' ,'soccer, football, video games', 'soccer', 'soccer', 'soccer','soccer, cooking', 'soccer, musical theater'], 
-      'Favorite school subject': ['Math','Math','Math','Science','Science','Math','History','Math','Social Studies','Math','Social Studies'], 
-      'Favorite Sport': ['Soccer', 'Basketball', 'Soccer', 'Basketball/Tennis', 'Soccer', 'Football', 'Football', 'Soccer', 'Soccer', 'Soccer', 'Soccer'], 
-      'Year Born': ['2012','2012','2013','2014','2011','2012','2012','2012','2012','2013','2011'], 
-      'Career Interest':['Soccer','NBA player', 'Soccer', 'Veterinarian', 'Physical Therapy', 'Soccer', 'Soccer', 'Engineer, almost any type', 'Soccer', 'Soccer Player', 'Soccer, Architecture']
+      'Name': ['Taylor','Kade','Gabe','Carolina','Kylie','Lucas','Teddy','Olivia','Alex','Dashley','Jameson','Evan','Kellan','Gregory'], 
+      'Hobby':['soccer','soccer and basketball','soccer', 'swimming, playing basketball and reading.', 'soccer' ,'soccer, football, video games', 'soccer', 'soccer', 'soccer','soccer, cooking', 'soccer, musical theater','Art, Track, Soccer','Soccer and Legos', 'video game designer'], 
+      'Favorite school subject': ['Math','Math','Math','Science','Science','Math','History','Math','Social Studies','Math','Social Studies','Math','History','History'], 
+      'Favorite Sport': ['Soccer', 'Basketball', 'Soccer', 'Basketball/Tennis', 'Soccer', 'Football', 'Football', 'Soccer', 'Soccer', 'Soccer', 'Soccer','Soccer','Soccer','Soccer'], 
+      'Year Born': ['2012','2012','2013','2014','2011','2012','2012','2012','2012','2013','2011','2013','2013','2013'], 
+      'Career Interest':['Soccer','NBA player', 'Soccer', 'Veterinarian', 'Physical Therapy', 'Soccer', 'Soccer', 'Engineer, almost any type', 'Soccer', 'Soccer Player', 'Soccer, Architecture','Brain Surgery','History Teacher','Video Game Programmer']
       }
 
 campers_db = pd.DataFrame(data=info)
