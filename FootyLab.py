@@ -25,7 +25,7 @@ if "user" not in st.session_state:
 
 ROLES = [None,"Coach Gus", "Alex", "Bowman", "Caroline", "Dashley", "Deklan", "Evie", "Gabriel", "Gregory", "Jameson", "Kade", "Kellan", "Kylie", "Lucas", "Olivia", "Taylor", "Teddy"]
 allroles = ["Coach Gus", "Alex", "Bowman", "Caroline", "Dashley", "Deklan", "Evie", "Gabriel", "Gregory", "Jameson", "Kade", "Kellan", "Kylie", "Lucas", "Olivia", "Taylor", "Teddy"]
-playersdeployed = ["coach Gus", "Kylie", "Carolina", "Gregory", "Olivia", "Teddy", "Lucas", "Kade", "Kellan"]
+playersdeployed = ["coach Gus", "Kylie", "Carolina", "Gregory", "Olivia", "Teddy", "Lucas", "Kade", "Kellan", "Gabriel"]
 def login():
 
     st.header("Log in")
@@ -131,10 +131,17 @@ kellan = st.Page(
     default=(user == "Kellan")
 )
 
+gabriel = st.Page(
+    "./roster/Gabriel.py",
+    title="Gabriel's App",
+    icon=":material/school:",
+    default=(user == "Gabriel")
+)
+
 account_pages = [logout_page, settings]
 explore_pages = [BootRoom, prosoccer]
 build_pages = [codeBox, coachGus]
-deployed_pages = [classpage, kylie, carolina, gregory, olivia, teddy, lucas, kade, kellan]
+deployed_pages = [classpage, kylie, carolina, gregory, olivia, teddy, lucas, kade, kellan, gabriel]
 
 page_dict = {}
 
