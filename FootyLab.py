@@ -75,10 +75,17 @@ prosoccer = st.Page(
 )
 #ayden = st.Page("./roster/ayden.py", title="Ayden", icon=":material/security:",default=(user=="Ayden"))
 
+kylie = st.Page(
+    "./roster/Kylie.py",
+    title="Kylie's App",
+    icon=":material/school:",
+    default=(user == "Kylie")
+)
+
 account_pages = [logout_page, settings]
 explore_pages = [BootRoom, prosoccer]
 build_pages = [codeBox, coachGus]
-deployed_pages = [classpage]
+deployed_pages = [classpage, kylie]
 
 page_dict = {}
 
