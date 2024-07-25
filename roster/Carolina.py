@@ -1,4 +1,5 @@
 # write code below!
 import streamlit as st
-if st.button("Carolina Slipped"):
-    st.video("./media/Carolina_slipped.mp4")
+if st.button('minecraft'):
+    st.toast("diamond time!", icon='💎')
+st.title ("minecraft" )

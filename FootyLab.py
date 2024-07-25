@@ -25,7 +25,7 @@ if "user" not in st.session_state:
 
 ROLES = [None,"Coach Gus", "Alex", "Bowman", "Caroline", "Dashley", "Deklan", "Evie", "Gabriel", "Gregory", "Jameson", "Kade", "Kellan", "Kylie", "Lucas", "Olivia", "Taylor", "Teddy"]
 allroles = ["Coach Gus", "Alex", "Bowman", "Caroline", "Dashley", "Deklan", "Evie", "Gabriel", "Gregory", "Jameson", "Kade", "Kellan", "Kylie", "Lucas", "Olivia", "Taylor", "Teddy"]
-playersdeployed = ["coach Gus", "Kylie", "Carolina", "Gregory", "Olvia", "Teddy"]
+playersdeployed = ["coach Gus", "Kylie", "Carolina", "Gregory", "Olivia", "Teddy"]
 def login():
 
     st.header("Log in")
