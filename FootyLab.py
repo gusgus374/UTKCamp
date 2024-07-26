@@ -90,7 +90,7 @@ carolina = st.Page(
 )
 
 gregory = st.Page(
-    "./roster/Gregorys_awsome_sus_bruh.py",
+    "./roster/final_sus_for_real_now.py",
     title="Minecraft sus",
     icon=":material/school:",
     default=(user == "Gregory")
