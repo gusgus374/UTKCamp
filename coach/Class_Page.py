@@ -174,7 +174,7 @@ with st.echo("below"):
 st.divider()
 
 st.header("BONUS - PLAYER DATA EXPLORER")
-coach_message = st.chat_message(name="Coach Gus",avatar="./resources/profile_coachGus.JPG")
+coach_message = st.chat_message(name="Coach Gus",avatar="./media/profile_coachGus.JPG")
 with coach_message:
     st.write("You can change the variables to see the relationship between different metrics!")
 
@@ -216,7 +216,7 @@ with st.expander("How did coach make this data explorer?"):
       st.code(
             '''
 st.header("BONUS - PLAYER DATA EXPLORER")
-coach_message = st.chat_message(name="Coach Gus",avatar="./resources/profile_coachGus.JPG")
+coach_message = st.chat_message(name="Coach Gus",avatar="./media/profile_coachGus.JPG")
 with coach_message:
     st.write("You can change the variables to see the relationship between different metrics!")
 
