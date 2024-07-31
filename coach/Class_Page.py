@@ -171,3 +171,87 @@ with st.echo("below"):
     combined_chart = (lines + circles).interactive()
     st.altair_chart(combined_chart, use_container_width=True)
 
+st.divider()
+
+st.header("BONUS - PLAYER DATA EXPLORER")
+coach_message = st.chat_message(name="Coach Gus",avatar="./resources/profile_coachGus.JPG")
+with coach_message:
+    st.write("You can change the variables to see the relationship between different metrics!")
+
+#use the Pandas read_csv method to read the gps_data and turn into a dataframe
+# Read the CSV file
+file_path = './data/last30days_GPS.csv'
+all_data = pd.read_csv(file_path)
+# Replace ":" with "_" in the column names
+all_data.columns = [col.replace(':', ' ') for col in all_data.columns]
+#keep only the rows were the column 'Split Name' has a value equal to 'all'
+game_data = all_data.loc[all_data['Split Name'] == "game"]
+#game_data = game_data.loc[game_data['Tags'] == 'game']
+game_data = game_data.set_index('Player Name', drop=False)
+game_data["day"] = game_data["Date"] - 45150
+game_data = game_data.loc[game_data["day"] > 0]
+with st.expander(label="View Your Data",expanded=False):
+    #display the uploaded data
+    st.write(game_data)
+variable_x = st.selectbox("Pick Your X Variable!",game_data.columns.to_list(),1)
+variable_y = st.selectbox("Pick Your Y Variable!",game_data.columns.to_list(),8)
+variable_size = st.selectbox("Pick Your Size Variable!",game_data.columns.to_list(),9)
+if variable_x == 'Session Title':
+    chart = alt.Chart(game_data).mark_circle().encode(
+    x='Session Title:T',
+    y=variable_y,
+    size=alt.Size(variable_size,legend=None),
+    color=alt.Color('Player Name',legend=None),
+    tooltip=["Player Name",]).properties(height=500).interactive()
+else:
+    chart = alt.Chart(game_data).mark_circle().encode(
+    x=variable_x,
+    y=variable_y,
+    size=alt.Size(variable_size,legend=None),
+    color=alt.Color('Player Name',legend=None),
+    tooltip=["Player Name","Session Title"]).properties(height=500).interactive()
+st.altair_chart(chart, theme="streamlit", use_container_width=True)
+
+with st.expander("How did coach make this data explorer?"):
+      st.code(
+            '''
+st.header("BONUS - PLAYER DATA EXPLORER")
+coach_message = st.chat_message(name="Coach Gus",avatar="./resources/profile_coachGus.JPG")
+with coach_message:
+    st.write("You can change the variables to see the relationship between different metrics!")
+
+#use the Pandas read_csv method to read the gps_data and turn into a dataframe
+# Read the CSV file
+file_path = './data/last30days_GPS.csv'
+all_data = pd.read_csv(file_path)
+# Replace ":" with "_" in the column names
+all_data.columns = [col.replace(':', ' ') for col in all_data.columns]
+#keep only the rows were the column 'Split Name' has a value equal to 'all'
+game_data = all_data.loc[all_data['Split Name'] == "game"]
+#game_data = game_data.loc[game_data['Tags'] == 'game']
+game_data = game_data.set_index('Player Name', drop=False)
+game_data["day"] = game_data["Date"] - 45150
+game_data = game_data.loc[game_data["day"] > 0]
+with st.expander(label="View Your Data",expanded=False):
+    #display the uploaded data
+    st.write(game_data)
+variable_x = st.selectbox("Pick Your X Variable!",game_data.columns.to_list(),1)
+variable_y = st.selectbox("Pick Your Y Variable!",game_data.columns.to_list(),8)
+variable_size = st.selectbox("Pick Your Size Variable!",game_data.columns.to_list(),9)
+if variable_x == 'Session Title':
+    chart = alt.Chart(game_data).mark_circle().encode(
+    x='Session Title:T',
+    y=variable_y,
+    size=alt.Size(variable_size,legend=None),
+    color=alt.Color('Player Name',legend=None),
+    tooltip=["Player Name",]).properties(height=500).interactive()
+else:
+    chart = alt.Chart(game_data).mark_circle().encode(
+    x=variable_x,
+    y=variable_y,
+    size=alt.Size(variable_size,legend=None),
+    color=alt.Color('Player Name',legend=None),
+    tooltip=["Player Name","Session Title"]).properties(height=500).interactive()
+st.altair_chart(chart, theme="streamlit", use_container_width=True)
+'''
+      )

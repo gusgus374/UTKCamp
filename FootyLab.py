@@ -13,9 +13,13 @@ import streamlit.components.v1 as components
 
 st.set_page_config(
     page_title="footyLab • Play to Learn | DataRook, Inc.",
-    page_icon="./media/DR_favicon.png",
+    page_icon="./media/footylab_v2_icon.png",
     layout="wide",
     initial_sidebar_state="collapsed",
+    menu_items={
+        'Get Help': 'https://datarook.com/contact',
+        'About': "## This is a version of footyLab created for the 2024 One Knox Soccer Lab camp at UTK. Contact gus@datarook.com to learn more"
+    }
 )
 
 if "user" not in st.session_state:
@@ -201,7 +205,7 @@ else:
 
 pg.run()
 
-st.logo("./media/footyLab_v2_96_NB.png",link="https://datarook.com/")
+st.logo("./media/footylab_v2_horizontal.png",link="https://datarook.com/")
 
 st.divider()
 st.header("Links and Resources")
